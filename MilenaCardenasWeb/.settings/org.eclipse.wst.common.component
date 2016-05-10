@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MilenaCardenasWeb">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="SpringEjemplo.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SpringEjemplo/SpringEjemplo">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="MilenaCardenasWeb"/>
+        <property name="java-output-path" value="/MilenaCardenasWeb/build/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-sep-2014 16:47:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.Cliente" table="clientes">
+        <id name="cedula" type="java.lang.String">
+            <column name="Cedula" />
+            <generator class="assigned" />
+        </id>
+        
+        <property name="nombres" type="java.lang.String">
+            <column name="Nombres" length="30" not-null="true"/>
+        </property>
+         <property name="apellidos" type="java.lang.String">
+            <column name="Apellidos" length="30" not-null="true"/>
+        </property>
+        <property name="correoElectronico" type="java.lang.String">
+            <column name="Email" length="120" not-null="true" />
+        </property>
+        <many-to-one name="usuarioCrea" class="co.edu.udea.iw.dto.Usuario">
+            <column name="UsuarioCrea" length="15" not-null="true"/>
+        </many-to-one>
+<!--         <property name="usuarioCrea" type="java.lang.String"> -->
+<!--             <column name="UsuarioCrea" length="15" not-null="true"/> -->
+<!--         </property> -->
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FechaCreacion" not-null="true"/>
+        </property>
+        <many-to-one name="usuarioModifica" class="co.edu.udea.iw.dto.Usuario">
+            <column name="UsuarioModifica" length="15" not-null="false"/>
+        </many-to-one>
+<!--         <property name="usuarioModifica" type="java.lang.String"> -->
+<!--             <column name="UsuarioModifica" length="15" not-null="false"/> -->
+<!--         </property> -->
+        <property name="fechaModificacion" type="java.util.Date">
+            <column name="FechaModificacion" not-null="false"/>
+        </property>
+        <property name="eliminado" type="java.lang.Boolean">
+            <column name="Eliminado" length="1"/>
+        </property>
+        <many-to-one name="usuarioElimina" class="co.edu.udea.iw.dto.Usuario">
+            <column name="UsuarioElimina" length="15" not-null="false"/>
+        </many-to-one>
+<!--         <property name="usuarioElimina" type="java.lang.String"> -->
+<!--             <column name="UsuarioElimina" length="15" not-null="false"/> -->
+<!--         </property> -->
+        <property name="fechaEliminacion" type="java.util.Date">
+            <column name="FechaEliminacion" not-null="false"/>
+        </property>
+    </class>
+</hibernate-mapping>

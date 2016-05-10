@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+    
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	    <property name="url" value="jdbc:mysql://localhost:3306/clase"/>
+	    <property name="username" value="root"/>
+	    <property name="password" value="root"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource"></property>
+	    <property name="mappingResources">
+	        <list>
+                <value>co/edu/udea/iw/dao/mapping/Ciudad.hbm.xml</value>
+                <value>co/edu/udea/iw/dao/mapping/Cliente.hbm.xml</value>
+                <value>co/edu/udea/iw/dao/mapping/Rol.hbm.xml</value>
+                <value>co/edu/udea/iw/dao/mapping/Usuario.hbm.xml</value>
+                <value>co/edu/udea/iw/dao/mapping/Direccion.hbm.xml</value>
+            </list>
+	    </property>
+	    <property name="hibernateProperties">
+	        <props>
+	            <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+	            <prop key="hibernate.show_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+	        </props>
+	    </property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	    <property name="dataSource" ref="dataSource"></property>
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<bean id="ciudadDao" class="co.edu.udea.iw.dao.hibernate.CiudadDAOHibernate">
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="clienteDao" class="co.edu.udea.iw.dao.hibernate.ClienteDAOHibernate">
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="usuarioDao" class="co.edu.udea.iw.dao.hibernate.UsuarioDAOHibernate">
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="clienteService" class="co.edu.udea.iw.service.ClienteService">
+	    <property name="clienteDAO" ref="clienteDao"></property>
+	    <property name="usuarioDAO" ref="usuarioDao"></property>
+	</bean>
+	<!--  Busca el paquete de los se encuentra esta anotacion y busca la clase encuentra la inyeccion, encuentra el bean y lo inyecta -->
+	<context:component-scan base-package="co.edu.udea.iw.webservice"/>
+	
+	<!--Asignar el bean para hacer las transacciones -->
+	<!--Nombre del bean que elegi para las transacciones  -->
+	<tx:annotation-driven transaction-manager = "transactionManager"/>
+	
+</beans>
