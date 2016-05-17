@@ -57,6 +57,9 @@
 	    <property name="clienteDAO" ref="clienteDao"></property>
 	    <property name="usuarioDAO" ref="usuarioDao"></property>
 	</bean>
+		<bean id="usuarioService" class="co.edu.udea.iw.service.UsuarioService">
+	    <property name="usuarioDAO" ref="usuarioDao"></property>
+	</bean>
 	<!--  Busca el paquete de los se encuentra esta anotacion y busca la clase encuentra la inyeccion, encuentra el bean y lo inyecta -->
 	<context:component-scan base-package="co.edu.udea.iw.webservice"/>
 	

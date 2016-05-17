@@ -2,8 +2,6 @@ package co.edu.udea.iw.webservice;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.jsp.tagext.TryCatchFinally;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,11 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-
-import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import co.edu.udea.iw.dto.Cliente;
 import co.edu.udea.iw.exception.IWDaoException;
 import co.edu.udea.iw.exception.IWServiceException;

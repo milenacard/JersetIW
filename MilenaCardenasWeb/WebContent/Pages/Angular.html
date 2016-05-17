@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MI PAGINA EJEMPLO ANGULAR</title>
+<script src="../Resources/js/angular.min.js"></script>
+</head>
+<body ng-app> <!-- Todo lo que vaya aca adentro va a ser dominado por Angular -->
+	<div>
+	Ingrese su nombre:
+	<!-- Para capturar el evento del evento, this->captura el evento completo -->
+		<input type="text" ng-model= "mensaje"> 
+	</div>
+	<div>
+		Hola!! {{mensaje}} <!--quiere decir que voy a mostrar la variable -->
+	</div>
+</body>
+</html>

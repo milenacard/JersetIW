@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MI PAGINA EJEMPLO</title>
+</head>
+<body>
+	<div>
+	Ingrese su nombre:
+	<!-- Para capturar el evento del evento, this->captura el evento completo -->
+		<input type="text" name="texto" onkeyup="actualizar(this)"> 
+	</div>
+	<div id="idNombre">
+		Hola!!
+	</div>
+	<!-- Toma lo que se digito en el input -->
+	<script type="text/javascript">
+		function actualizar(elem){
+			var nombre = elem.value;
+			//busca dentro de la pag html un elementyo que tenga el nombre que se pasa como parametro
+			var salida = document.getElementById("idNombre");
+			salida.innerHTML = "Hola:" + " " + nombre;
+		}
+	</script>
+</body>
+</html>
