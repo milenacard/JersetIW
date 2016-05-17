@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.jsp.tagext.TryCatchFinally;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -21,6 +22,7 @@ import co.edu.udea.iw.dto.Cliente;
 import co.edu.udea.iw.exception.IWDaoException;
 import co.edu.udea.iw.exception.IWServiceException;
 import co.edu.udea.iw.service.ClienteService;
+import co.edu.udea.iw.service.UsuarioService;
 import co.edu.udea.iw.web.dto.ClienteDTOWs;
 import javassist.tools.rmi.RemoteException;
 
@@ -37,6 +39,10 @@ public class ClienteWs {
 	@Autowired
 	// inyecta el ClienteService(Logica de negocio)
 	ClienteService clienteService;
+	
+	@Autowired
+	// inyecta el UsuarioService(Logica de negocio)
+	UsuarioService usuarioService;
 
 	/**
 	 * Metodo para entregar la lista de clientes
@@ -110,7 +116,7 @@ public class ClienteWs {
 	 * @return
 	 */
 	@Produces(MediaType.TEXT_PLAIN)
-	@GET
+	@DELETE
 	@Path("delete")
 	// url /rest/cliente/delete
 	public String delete(@QueryParam("cedula") String cedula,
@@ -127,8 +133,10 @@ public class ClienteWs {
 		return " ";
 
 	}
+	
 	 /**
-	  * MEtodo para modificar un cliente.
+	  * Metodo para modificar un cliente.
+	  * 
 	  * @param cedula
 	  * @param nombres
 	  * @param apellidos
@@ -156,7 +164,22 @@ public class ClienteWs {
 		return " ";
 	}
 	
-
-
+	@Produces(MediaType.TEXT_PLAIN)
+	@GET
+	@Path("autenticar")
+	public String autenticar(@QueryParam("login") String login, @QueryParam("clave") String clave){
+	
+		try {
+			usuarioService.validar(login, clave);
+		} catch (IWDaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IWServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return " ";
+	}
+	
 	
 }

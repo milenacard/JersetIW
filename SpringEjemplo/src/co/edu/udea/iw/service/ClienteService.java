@@ -41,14 +41,14 @@ public class ClienteService {
 			throw new IWServiceException("Los apellidos del cliente no puede ser nula, ni una cadena de caracteres vacia");
 		}
 		if(Validaciones.isTextoVacio(correoElectronico)){
-			throw new IWServiceException("El correo electr�nico del cliente no puede ser nula, ni una cadena de caracteres vacia");
+			throw new IWServiceException("El correo electronico del cliente no puede ser nula, ni una cadena de caracteres vacia");
 		}
 		if(Validaciones.isTextoVacio(usuarioCrea)){
 			throw new IWServiceException("El usuario que crea el cliente no puede ser nula, ni una cadena de caracteres vacia");
 		}
 		
 		if(!Validaciones.isEmail(correoElectronico)){
-			throw new IWServiceException("El correo electr�nico del cliente debe ser v�lido");
+			throw new IWServiceException("El correo electronico del cliente debe ser valido");
 		}
 		
 		if(clienteDAO.obtener(cedula) != null){

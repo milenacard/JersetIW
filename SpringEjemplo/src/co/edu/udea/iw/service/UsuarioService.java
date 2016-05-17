@@ -44,17 +44,16 @@ public class UsuarioService {
 		
 		Usuario usuario = usuarioDAO.obtener(login);
 		if(usuario == null){
-			throw new IWServiceException("Usuario o contraseña no válidos");
+			throw new IWServiceException("Usuario o contraseï¿½a no vï¿½lidos");
 		}
 		
 		
 		if(!cifrar.encrypt(clave).equals(usuario.getPassword())){
-			throw new IWServiceException("Usuario o contraseña no válidos");
+			throw new IWServiceException("Usuario o contraseï¿½a no vï¿½lidos");
 		}
 		
-		return Boolean.TRUE;
-		
-		
+		return Boolean.TRUE;		
 	}
+	
 
 }
