@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Modulo -->
+<html ng-app="miAplicacion">
+<head>
+<title>Ejemplo Angular</title>
+<script src="../Resources/js/angular.min.js"></script><!-- Se sale una vez del directorio -->
+<script src="../Resources/js/controller.js"></script>
+</head>
+<body>
+	<!-- Directiva de angular para decir que todo lo que este aqui va a ser gobernado por Controlador -->
+	<div ng-controller="Controlador">
+		<!-- Funciona como un boton -->
+		<a href="#" ng-click="eliminar()"> Eliminar seleccionados </a>
+		<ul>
+			<!-- Se va a repetir tantas veces como lo que tenga la variable item -->
+			<li ng-repeat="item in lista">
+				<!-- generar un checkbox por medio de la variable item en seleccionado -->
+				<!-- ng model cambia atomaticamente el valor de la variable por el seleccionado -->
+				<input type="checkbox" ng-model="item.seleccionado" /> <!-- mostrar el contenido de la variable de item en texto -->
+				<span> {{item.texto}} </span>
+			</li>
+		</ul>
+		<form ng-submit="agregar()">
+			<!-- Texto que se va a guardar en la variable texto -->
+			<input type="text" ng-model="texto" /> 
+			<!-- Boton Agregar -->
+			<input type="submit" value="Agregar" />
+		</form>
+	</div>
+</body>
+</html>
