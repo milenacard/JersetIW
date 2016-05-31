@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app"Encuesta">
+<head>
+<meta charset="ISO-8859-1">
+<title>Encesta</title>
+<script src="../Resources/js/angular.min.js"></script><!-- Se sale una vez del directorio -->
+<script src="../Resources/js/Encuesta.js"></script>
+</head>
+<body>
+	<div ng-controller="preguntasEncuesta">
+		<div ng-repeat="pregunta in preguntas">	
+			<span>{{pregunta.texto}}</span>	
+				<div ng-repeat="respuesta in pregunta.respuestas">
+					<input type="radio" ng-model="pregunta.respuesta"
+						name="Pregunta{{pregunta.id}}" id="Pregunta"{{pregunta.id}}{{respuesta.id}}/>
+					<label for="Pregunta{{Pregunta.id}}{{respuesta.id}}">{{respuesta.texto}}</label>
+				</div>
+		</div>	
+	</div>
+</body>
+</html>
