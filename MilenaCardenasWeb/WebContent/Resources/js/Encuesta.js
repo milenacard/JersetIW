@@ -3,7 +3,7 @@ var mod = angular.module('Encuesta', []);
 mod.controller('preguntasEncuesta', ['$scope', function($scope) {
 	
 	$scope.preguntas=[{id:1,
-		texto: 'pregunta 1',
+		texto: 'Pregunta 1',
 		respuestaValida: 1,
 		respuesta: null,
 		estado: '',
@@ -15,11 +15,11 @@ mod.controller('preguntasEncuesta', ['$scope', function($scope) {
 	                texto: 'opcion 3'}]	
 	
 	}, {id: 2,
-		texto: 'pregunta2',
+		texto: 'Pregunta 2',
 		respuestaValida: 1,
 		respuesta:null,
 		estado: '',
-		respuesta:[{id:1,
+		respuestas:[{id:2,
             texto: 'opcion 1'},
             {id:2,
             texto: 'opcion 2'},

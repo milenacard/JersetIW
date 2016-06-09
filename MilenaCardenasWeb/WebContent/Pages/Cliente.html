@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Clientes</title>
+<script src="../Resources/js/angular.min.js"></script><!-- Se sale una vez del directorio -->
+<script src="../Resources/js/Clientes.js"></script>
+</head>
+<body ng-app ="Clientes"> <!-- Hace referencia al modulo del archivo js -->
+	<div ng-controller="listaClientes">
+		<table border="1" width="100%">
+			<tr>
+				<th>Cedula</th>
+				<th>Nombre completa</th>
+				<th>Correo Electronico</th>
+			</tr>
+			<tr ng-repeat = "cliente in clientes">
+				<td>{{cliente.cedula}}</td>
+				<td>{{cliente.nombre}} {{cliente.apellido}}</td>
+				<td>{{cliente.email}}</td>
+			</tr>		
+		</table>
+	</div>
+</body>
+</html>

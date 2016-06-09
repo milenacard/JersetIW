@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html ng-app"Encuesta">
+<html ng-app="Encuesta">
 <head>
 <meta charset="ISO-8859-1">
-<title>Encesta</title>
+<title>Encuesta</title>
 <script src="../Resources/js/angular.min.js"></script><!-- Se sale una vez del directorio -->
 <script src="../Resources/js/Encuesta.js"></script>
 </head>
 <body>
 	<div ng-controller="preguntasEncuesta">
-		<div ng-repeat="pregunta in preguntas">	
+		<div ng-repeat="pregunta in preguntas">	<!-- Es como un ciclo for -->
 			<span>{{pregunta.texto}}</span>	
 				<div ng-repeat="respuesta in pregunta.respuestas">
 					<input type="radio" ng-model="pregunta.respuesta"
-						name="Pregunta{{pregunta.id}}" id="Pregunta"{{pregunta.id}}{{respuesta.id}}/>
+						name="Pregunta{{pregunta.id}}" id="Pregunta{{pregunta.id}}{{respuesta.id}}" ng-click="validar(pregunta)"/>
 					<label for="Pregunta{{Pregunta.id}}{{respuesta.id}}">{{respuesta.texto}}</label>
 				</div>
 		</div>	
+			<h1>{{respuestaValidar}}</h1>
 	</div>
 </body>
 </html>

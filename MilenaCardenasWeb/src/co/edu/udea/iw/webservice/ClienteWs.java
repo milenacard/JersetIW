@@ -45,7 +45,7 @@ public class ClienteWs {
 	 * @return Lista de clientes
 	 * @throws RemoteException
 	 */
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	// consulto datos
 	/* librería remoteException -->java.sssi */
